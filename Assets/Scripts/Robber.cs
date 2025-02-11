@@ -11,8 +11,13 @@ public class Robber : NetworkBehaviour
 
     void Update()
     {
-        if (!IsOwner) return; // Only allow movement for the local player
+        if (!IsOwner)
+        {
+            Debug.Log("Not the owner of this Robber. Skipping input.");
+            return;
+        }
 
+        Debug.Log("Processing input for Robber.");
         HandleMovement();
         HandleHacking();
     }

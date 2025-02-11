@@ -93,8 +93,17 @@ public class NetworkManagerUI : MonoBehaviour
         GameObject playerPrefab = role == "Cop" ? Resources.Load<GameObject>("Cop") : Resources.Load<GameObject>("Robber");
         if (playerPrefab != null)
         {
-            NetworkObject player = Instantiate(playerPrefab).GetComponent<NetworkObject>();
-            player.SpawnWithOwnership(NetworkManager.Singleton.LocalClientId, true);
+            GameObject player = Instantiate(playerPrefab);
+            NetworkObject networkObject = player.GetComponent<NetworkObject>();
+            if (networkObject != null)
+            {
+                networkObject.SpawnWithOwnership(NetworkManager.Singleton.LocalClientId, true);
+                Debug.Log($"{role} spawned with ownership for client {NetworkManager.Singleton.LocalClientId}.");
+            }
+            else
+            {
+                Debug.LogError($"Failed to spawn {role}: NetworkObject component missing.");
+            }
         }
         else
         {
