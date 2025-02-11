@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using Unity.Netcode;
 
@@ -8,6 +9,8 @@ public class GameManager : NetworkBehaviour
     public Transform copSpawnPoint; // Cop spawn location
     public Transform[] robberSpawnPoints; // Array of spawn points for robbers
     private int robberSpawnIndex = 0; // To cycle through spawn points
+
+    
 
     public override void OnNetworkSpawn()
     {

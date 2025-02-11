@@ -10,12 +10,12 @@ public class Cache : MonoBehaviour
     {
         if (other.CompareTag("PackageToCache")) // Detect package from RAM
         {
+            SendPackageToALU(other.GetComponent<Package>().hacked);
             Destroy(other.gameObject); // Destroy the received package
-            SendPackageToALU();
         }
     }
 
-    void SendPackageToALU()
+    void SendPackageToALU(bool hacked)
     {
         if (alu == null)
         {
@@ -28,6 +28,7 @@ public class Cache : MonoBehaviour
 
         if (packageScript != null)
         {
+            packageScript.hacked = hacked;
             packageScript.target = alu;
             packageScript.speed *= speedMultiplier; // Multiply speed by defined factor
         }

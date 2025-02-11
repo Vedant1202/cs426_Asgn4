@@ -3,7 +3,8 @@ using UnityEngine;
 public class Package : MonoBehaviour
 {
     public Transform target;
-    public float speed = 5f; // Default movement speed
+    public bool hacked = false;
+    public float speed = 4f; // Default movement speed
 
     void Start()
     {
@@ -22,7 +23,7 @@ public class Package : MonoBehaviour
 
         if (Vector3.Distance(transform.position, target.position) < 0.1f)
         {
-            Destroy(gameObject); // Destroy the package at its destination
+            // Destroy(gameObject); // Destroy the package at its destination
         }
     }
 }
