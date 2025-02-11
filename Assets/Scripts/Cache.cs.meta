@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: fff77355f76854163a8c998963ad2cf9
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - packageToALUPrefab: {fileID: 4354573108400593232, guid: af6ab02abe0b7404e908a54335dc0eb7, type: 3}
+  - alu: {fileID: 6011534546736408586, guid: 7951b3bd03cfe462a9c7b552b3b34aa0, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

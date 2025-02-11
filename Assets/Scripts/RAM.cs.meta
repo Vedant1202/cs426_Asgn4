@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 6d33090728d9f4d1b81c276c53852d15
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - packageToCachePrefab: {fileID: 1697993437776637994, guid: c5681615ee5e242009b0d19278ab9bdd, type: 3}
+  - cache: {fileID: 6302932123880532439, guid: 368764adb22ce42329dbe3486f24a5e7, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

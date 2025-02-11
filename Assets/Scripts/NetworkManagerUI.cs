@@ -106,7 +106,15 @@ public class NetworkManagerUI : MonoBehaviour
         NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(serverData);
 
         //Start the client
-        NetworkManager.Singleton.StartClient();
+        if (!NetworkManager.Singleton.IsClient && !NetworkManager.Singleton.IsServer)
+        {
+            NetworkManager.Singleton.StartClient();
+        }
+        else
+        {
+            Debug.LogWarning("Client is already running. Ignoring duplicate connection attempt.");
+        }
+
     }
 
 }

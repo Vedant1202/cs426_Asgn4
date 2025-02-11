@@ -1,2 +1,14 @@
 fileFormatVersion: 2
 guid: f7f10fed6bdb340c2947661f5a8a304d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - copPrefab: {fileID: 29124107612291261, guid: a187a50765cca455c947666cc98661ae, type: 3}
+  - robberPrefab: {fileID: 1285540426317231002, guid: 71f2461ea1127410f8eabbfbe96758a7, type: 3}
+  - copSpawnPoint: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

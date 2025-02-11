@@ -36,48 +36,34 @@ public class PlayerMovement : NetworkBehaviour
     void Update()
     {
         // check if the player is the owner of the object
-        // makes sure the script is only executed on the owners 
-        // not on the other prefabs 
         if (!IsOwner) return;
 
-        Vector3 moveDirection = new Vector3(0, 0, 0);
+        // Movement (W/S to move forward/backward)
+        Vector3 moveDirection = Vector3.zero;
 
         if (Input.GetKey(KeyCode.W))
         {
-            moveDirection.z = +1f;
+            moveDirection.z = 1f; // Move forward
         }
         if (Input.GetKey(KeyCode.S))
         {
-            moveDirection.z = -1f;
+            moveDirection.z = -1f; // Move backward
         }
+
+        // Rotation (A/D to rotate left/right)
+        float rotationInput = 0f;
         if (Input.GetKey(KeyCode.A))
         {
-            moveDirection.x = -1f;
+            rotationInput = -1f; // Rotate left
         }
         if (Input.GetKey(KeyCode.D))
         {
-            moveDirection.x = +1f;
-        }
-        transform.position += moveDirection * speed * Time.deltaTime;
-
-
-        // if I is pressed spawn the object 
-        // if J is pressed destroy the object
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            //instantiate the object
-            instantiatedPrefab = Instantiate(spawnedPrefab);
-            // spawn it on the scene
-            instantiatedPrefab.GetComponent<NetworkObject>().Spawn(true);
+            rotationInput = 1f; // Rotate right
         }
 
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            //despawn the object
-            instantiatedPrefab.GetComponent<NetworkObject>().Despawn(true);
-            // destroy the object
-            Destroy(instantiatedPrefab);
-        }
+        // Move the player in the direction based on W/S and apply rotation based on A/D
+        transform.Translate(moveDirection * speed * Time.deltaTime, Space.World); // Move in world space
+        transform.Rotate(Vector3.up * rotationInput * speed * Time.deltaTime); // Rotate around the Y-axis
 
         if (Input.GetButtonDown("Fire1"))
         {
