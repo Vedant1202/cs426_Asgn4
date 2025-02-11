@@ -138,7 +138,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!114 &8011963369668256290
@@ -236,7 +236,7 @@ MonoBehaviour:
   hackRadius: 3
   packetLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
 --- !u!1001 &8528846329810683145
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - spawnedPrefab: {instanceID: 0}
+  - spawnedPrefab: {fileID: 1285540426317231002, guid: 71f2461ea1127410f8eabbfbe96758a7, type: 3}
   - cannon: {fileID: 29124107612291261, guid: a187a50765cca455c947666cc98661ae, type: 3}
   - bullet: {fileID: 1832619628312737153, guid: 5509abb37c29c4660a371601b74b997e, type: 3}
   - audioListener: {instanceID: 0}
