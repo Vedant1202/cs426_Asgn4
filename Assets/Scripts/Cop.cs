@@ -1,29 +1,32 @@
 using UnityEngine;
+using Unity.Netcode;
 
-public class Cop : MonoBehaviour
+public class Cop : NetworkBehaviour
 {
-    public float moveSpeed = 5f; // Movement speed
-    public GameObject bulletPrefab; // Bullet prefab
-    public float bulletSpeed = 10f; // Speed of bullets
+    public float moveSpeed = 5f;
+    public GameObject bulletPrefab;
+    public float bulletSpeed = 10f;
 
     private Vector3 moveDirection;
 
     void Update()
     {
+        if (!IsOwner) return; // Only allow movement for the local player
+
         HandleMovement();
         HandleShooting();
     }
 
     void HandleMovement()
     {
-        float moveX = Input.GetAxisRaw("Horizontal"); // A/D or Left/Right
-        float moveZ = Input.GetAxisRaw("Vertical");   // W/S or Up/Down
+        float moveX = Input.GetAxisRaw("Horizontal");
+        float moveZ = Input.GetAxisRaw("Vertical");
 
         moveDirection = new Vector3(moveX, 0, moveZ).normalized;
 
         if (moveDirection != Vector3.zero)
         {
-            transform.forward = moveDirection; // Rotate Cop in movement direction
+            transform.forward = moveDirection;
         }
 
         transform.position += moveDirection * moveSpeed * Time.deltaTime;
@@ -31,7 +34,7 @@ public class Cop : MonoBehaviour
 
     void HandleShooting()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) // Press Space to shoot
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             ShootBullet();
         }
@@ -44,7 +47,7 @@ public class Cop : MonoBehaviour
 
         if (rb != null)
         {
-            rb.linearVelocity = transform.forward * bulletSpeed; // Apply force to move bullet
+            rb.linearVelocity = transform.forward * bulletSpeed;
         }
         else
         {
