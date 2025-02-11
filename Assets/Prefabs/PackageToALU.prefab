@@ -125,6 +125,9 @@ MonoBehaviour:
   target: {fileID: 6011534546736408586, guid: 7951b3bd03cfe462a9c7b552b3b34aa0, type: 3}
   hacked: 0
   speed: 5
+  detectionRadius: 1
+  hackedMaterial: {fileID: 2100000, guid: 47fb202b6b8f346cd98e675afb7c00dc, type: 2}
+  normalMaterial: {fileID: 2100000, guid: 9514ae568ae474936b82c7ed5972d650, type: 2}
 --- !u!54 &-8259074880352938854
 Rigidbody:
   m_ObjectHideFlags: 0

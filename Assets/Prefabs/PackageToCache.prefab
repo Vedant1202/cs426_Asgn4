@@ -123,7 +123,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 6302932123880532439, guid: 368764adb22ce42329dbe3486f24a5e7, type: 3}
+  hacked: 0
   speed: 5
+  detectionRadius: 1
+  hackedMaterial: {fileID: 2100000, guid: 47fb202b6b8f346cd98e675afb7c00dc, type: 2}
+  normalMaterial: {fileID: 2100000, guid: 9514ae568ae474936b82c7ed5972d650, type: 2}
 --- !u!54 &-9112172421870847829
 Rigidbody:
   m_ObjectHideFlags: 0

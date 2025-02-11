@@ -8,6 +8,7 @@ TagManager:
   - PackageToCache
   - PackageToALU
   - Enemy
+  - Cop
   layers:
   - Default
   - TransparentFX
