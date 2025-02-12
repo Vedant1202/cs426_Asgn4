@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7579247191907587663}
   - component: {fileID: -1349016217180037374}
   - component: {fileID: 8260875778962400272}
+  - component: {fileID: 4566127981744147747}
   m_Layer: 0
   m_Name: Robber
   m_TagString: Enemy
@@ -226,7 +227,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1285540426317231002}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de16cc70b8d986d41b7e7b9e839b23cf, type: 3}
   m_Name: 
@@ -237,6 +238,26 @@ MonoBehaviour:
   packetLayer:
     serializedVersion: 2
     m_Bits: 8
+--- !u!114 &4566127981744147747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285540426317231002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc98ed5ac9ff3094e9f8ad4b94ff6176, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  speed: 2
+  colors: []
+  spawnedPrefab: {fileID: 1285540426317231002}
+  cannon: {fileID: 29124107612291261, guid: a187a50765cca455c947666cc98661ae, type: 3}
+  bullet: {fileID: 1832619628312737153, guid: 5509abb37c29c4660a371601b74b997e, type: 3}
+  audioListener: {fileID: 0}
+  playerCamera: {fileID: 5955133562005477670, guid: 35b566ca1922a064b83c0f7e23c48944, type: 3}
 --- !u!1001 &8528846329810683145
 PrefabInstance:
   m_ObjectHideFlags: 0

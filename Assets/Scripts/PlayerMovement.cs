@@ -65,7 +65,7 @@ public class PlayerMovement : NetworkBehaviour
         transform.Translate(moveDirection * speed * Time.deltaTime, Space.World); // Move in world space
         transform.Rotate(Vector3.up * rotationInput * speed * Time.deltaTime); // Rotate around the Y-axis
 
-        if (Input.GetButtonDown("Fire1"))
+        if (gameObject.CompareTag("Cop") && Input.GetButtonDown("Fire1"))
         {
             // call the BulletSpawningServerRpc method
             // as client can not spawn objects
