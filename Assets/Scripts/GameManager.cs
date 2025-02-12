@@ -10,7 +10,7 @@ public class GameManager : NetworkBehaviour
     public Transform[] robberSpawnPoints; // Array of spawn points for robbers
     private int robberSpawnIndex = 0; // To cycle through spawn points
 
-    
+    public bool gameStarted = false;
 
     public override void OnNetworkSpawn()
     {
@@ -18,6 +18,10 @@ public class GameManager : NetworkBehaviour
         {
             NetworkManager.Singleton.OnClientConnectedCallback += AssignRole;
         }
+    }
+
+    public void StartGame() {
+        gameStarted = true;
     }
 
     private void AssignRole(ulong clientId)

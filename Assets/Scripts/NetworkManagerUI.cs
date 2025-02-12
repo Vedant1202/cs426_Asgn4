@@ -13,9 +13,12 @@ public class NetworkManagerUI : MonoBehaviour
 {
     [SerializeField] private Button host_btn;
     [SerializeField] private Button client_btn;
+    [SerializeField] private Button start_btn;
     [SerializeField] private TMP_Text joinCodeText;
     [SerializeField] private TMP_InputField joinCodeInputField;
     [SerializeField] private int maxPlayers = 4;
+
+    public GameManager gameManager;
 
     private string joinCode;
 
@@ -23,6 +26,7 @@ public class NetworkManagerUI : MonoBehaviour
     {
         host_btn.onClick.AddListener(() => StartHostRelay());
         client_btn.onClick.AddListener(() => StartClientRelay(joinCodeInputField.text));
+        start_btn.onClick.AddListener(() => {gameManager.StartGame(); start_btn.gameObject.SetActive(false);});
     }
 
     private async void Start()
@@ -46,6 +50,10 @@ public class NetworkManagerUI : MonoBehaviour
 
             // Assign Cop role to the host
             AssignPlayerRole(true);
+            start_btn.gameObject.SetActive(true);
+            host_btn.gameObject.SetActive(false);
+            client_btn.gameObject.SetActive(false);
+            joinCodeInputField.gameObject.SetActive(false);
         }
         catch (RelayServiceException e)
         {
@@ -65,6 +73,9 @@ public class NetworkManagerUI : MonoBehaviour
 
             // Assign Robber role to the client
             AssignPlayerRole(false);
+            host_btn.gameObject.SetActive(false);
+            client_btn.gameObject.SetActive(false);
+            joinCodeInputField.gameObject.SetActive(false);
         }
         catch (RelayServiceException e)
         {

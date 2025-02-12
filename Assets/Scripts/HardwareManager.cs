@@ -10,9 +10,11 @@ public class HardwareManager : MonoBehaviour
     [SerializeField] private TMP_Text aluHealthDisplay;
     [SerializeField] private TMP_Text timerDisplay;
 
+    private GameManager gameManager;
+
     private void Start()
     {
-        timerRunning = true;
+        gameManager = FindAnyObjectByType<GameManager>();
     }
     public void damageALU() {
         
@@ -21,7 +23,9 @@ public class HardwareManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timerRunning) {
+        if (gameManager != null && gameManager.gameStarted) {
+            aluHealthDisplay.gameObject.SetActive(true);
+            timerDisplay.gameObject.SetActive(true);
             if (timeRemaining > 0) {
                 timeRemaining -= Time.deltaTime;
                 if (timeRemaining < 0) {
