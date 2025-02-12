@@ -22,7 +22,7 @@ public class Cop : NetworkBehaviour
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveZ = Input.GetAxisRaw("Vertical");
 
-        moveDirection = new Vector3(moveX, 0, moveZ).normalized;
+        moveDirection = new Vector3(-moveX, 0, -moveZ).normalized;
 
         if (moveDirection != Vector3.zero)
         {
