@@ -216,7 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
   NetworkRigidbodyBaseExpanded: 0
-  UseRigidBodyForMotion: 0
+  UseRigidBodyForMotion: 1
   AutoUpdateKinematicState: 1
   AutoSetKinematicOnDespawn: 1
 --- !u!114 &8260875778962400272
@@ -232,11 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  moveSpeed: 5
-  hackRadius: 3
-  packetLayer:
-    serializedVersion: 2
-    m_Bits: 8
+  moveSpeed: 40
 --- !u!1001 &8528846329810683145
 PrefabInstance:
   m_ObjectHideFlags: 0

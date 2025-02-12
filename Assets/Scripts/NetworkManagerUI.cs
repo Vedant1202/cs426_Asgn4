@@ -15,7 +15,7 @@ public class NetworkManagerUI : MonoBehaviour
     [SerializeField] private Button client_btn;
     [SerializeField] private TMP_Text joinCodeText;
     [SerializeField] private TMP_InputField joinCodeInputField;
-    [SerializeField] private int maxPlayers = 4;
+    [SerializeField] private int maxPlayers = 4; 
 
     private string joinCode;
 
@@ -44,8 +44,7 @@ public class NetworkManagerUI : MonoBehaviour
             NetworkManager.Singleton.StartHost();
             joinCodeText.text = joinCode;
 
-            // Assign Cop role to the host
-            AssignPlayerRole(true);
+            Debug.Log("Host started. Netcode will automatically spawn the Cop.");
         }
         catch (RelayServiceException e)
         {
@@ -74,23 +73,16 @@ public class NetworkManagerUI : MonoBehaviour
 
     private void AssignPlayerRole(bool isHost)
     {
-        if (isHost)
-        {
-            Debug.Log("You are the Cop (Host).");
-            // Spawn Cop prefab for the host
-            SpawnPlayer("Cop");
-        }
-        else
+        if (!isHost) // Only spawn manually for clients
         {
             Debug.Log("You are the Robber (Client).");
-            // Spawn Robber prefab for the client
             SpawnPlayer("Robber");
         }
     }
 
     private void SpawnPlayer(string role)
     {
-        GameObject playerPrefab = role == "Cop" ? Resources.Load<GameObject>("Cop") : Resources.Load<GameObject>("Robber");
+        GameObject playerPrefab = role == "Robber" ? Resources.Load<GameObject>("Robber") : null;
         if (playerPrefab != null)
         {
             GameObject player = Instantiate(playerPrefab);

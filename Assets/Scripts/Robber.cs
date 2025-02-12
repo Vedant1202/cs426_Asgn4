@@ -3,31 +3,34 @@ using Unity.Netcode;
 
 public class Robber : NetworkBehaviour
 {
-    public float moveSpeed = 5f;
-    public float hackRadius = 3f;
-    public LayerMask packetLayer;
-
+    public float moveSpeed = 40F;
     private Vector3 moveDirection;
 
     void Update()
     {
-        if (!IsOwner)
-        {
-            Debug.Log("Not the owner of this Robber. Skipping input.");
-            return;
-        }
+        // if (!IsOwner)
+        // {
+        //     Debug.Log("Not the owner of this Robber. Skipping input.");
+        //     return;
+        // }
 
         Debug.Log("Processing input for Robber.");
         HandleMovement();
-        HandleHacking();
     }
 
     void HandleMovement()
     {
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveZ = Input.GetAxisRaw("Vertical");
+        float moveX = 0f;
+        float moveZ = 0f;
 
-        moveDirection = new Vector3(moveX, 0, moveZ).normalized;
+        if (Input.GetKey(KeyCode.I)) moveZ += 1f;  // Forward
+        if (Input.GetKey(KeyCode.K)) moveZ -= 1f;  // Backward
+        if (Input.GetKey(KeyCode.J)) moveX -= 1f;  // Left
+        if (Input.GetKey(KeyCode.L)) moveX += 1f;  // Right
+
+        // ✅ Corrected movement to match standard Unity axis behavior
+        moveDirection = new Vector3(-moveX, 0, -moveZ).normalized;
+
 
         if (moveDirection != Vector3.zero)
         {
@@ -35,22 +38,5 @@ public class Robber : NetworkBehaviour
         }
 
         transform.position += moveDirection * moveSpeed * Time.deltaTime;
-    }
-
-    void HandleHacking()
-    {
-        Collider[] packets = Physics.OverlapSphere(transform.position, hackRadius, packetLayer);
-        foreach (Collider packet in packets)
-        {
-            if (packet.CompareTag("PackageToCache") || packet.CompareTag("PackageToALU"))
-            {
-                Package package = packet.GetComponent<Package>();
-                if (package != null && !package.hacked)
-                {
-                    package.hacked = true;
-                    Debug.Log("Packet hacked by Robber!");
-                }
-            }
-        }
     }
 }
