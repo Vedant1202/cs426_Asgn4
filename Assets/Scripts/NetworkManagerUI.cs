@@ -13,9 +13,12 @@ public class NetworkManagerUI : MonoBehaviour
 {
     [SerializeField] private Button host_btn;
     [SerializeField] private Button client_btn;
+    [SerializeField] private Button start_btn;
     [SerializeField] private TMP_Text joinCodeText;
     [SerializeField] private TMP_InputField joinCodeInputField;
     [SerializeField] private int maxPlayers = 4;
+
+    public GameManager gameManager;
 
     private string joinCode;
 
@@ -23,6 +26,7 @@ public class NetworkManagerUI : MonoBehaviour
     {
         host_btn.onClick.AddListener(() => StartHostRelay());
         client_btn.onClick.AddListener(() => StartClientRelay(joinCodeInputField.text));
+        start_btn.onClick.AddListener(() => {gameManager.StartGame(); start_btn.gameObject.SetActive(false);});
     }
 
     private async void Start()
@@ -44,8 +48,11 @@ public class NetworkManagerUI : MonoBehaviour
             NetworkManager.Singleton.StartHost();
             joinCodeText.text = joinCode;
 
-            // Assign Cop role to the host
-            AssignPlayerRole(true);
+            Debug.Log("Host started. Netcode will automatically spawn the Cop.");
+            start_btn.gameObject.SetActive(true);
+            host_btn.gameObject.SetActive(false);
+            client_btn.gameObject.SetActive(false);
+            joinCodeInputField.gameObject.SetActive(false);
         }
         catch (RelayServiceException e)
         {
@@ -65,6 +72,9 @@ public class NetworkManagerUI : MonoBehaviour
 
             // Assign Robber role to the client
             AssignPlayerRole(false);
+            host_btn.gameObject.SetActive(false);
+            client_btn.gameObject.SetActive(false);
+            joinCodeInputField.gameObject.SetActive(false);
         }
         catch (RelayServiceException e)
         {
@@ -74,23 +84,16 @@ public class NetworkManagerUI : MonoBehaviour
 
     private void AssignPlayerRole(bool isHost)
     {
-        if (isHost)
-        {
-            Debug.Log("You are the Cop (Host).");
-            // Spawn Cop prefab for the host
-            SpawnPlayer("Cop");
-        }
-        else
+        if (!isHost) // Only spawn manually for clients
         {
             Debug.Log("You are the Robber (Client).");
-            // Spawn Robber prefab for the client
             SpawnPlayer("Robber");
         }
     }
 
     private void SpawnPlayer(string role)
     {
-        GameObject playerPrefab = role == "Cop" ? Resources.Load<GameObject>("Cop") : Resources.Load<GameObject>("Robber");
+        GameObject playerPrefab = role == "Robber" ? Resources.Load<GameObject>("Robber") : null;
         if (playerPrefab != null)
         {
             GameObject player = Instantiate(playerPrefab);

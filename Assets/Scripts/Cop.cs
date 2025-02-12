@@ -1,37 +1,72 @@
 using UnityEngine;
-using Unity.Netcode;
 
-public class Cop : NetworkBehaviour
+public class Cop : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public GameObject bulletPrefab;
-    public float bulletSpeed = 10f;
+    [Header("Movement Settings")]
+    public float speed = 5.0f;           // Movement speed (units/second)
+    public float rotationSpeed = 90.0f;  // Rotation speed in degrees/second (increased for more responsive turning)
 
-    private Vector3 moveDirection;
+    [Header("Shooting Settings")]
+    public float bulletSpeed = 10f;       // Bullet travel speed
+    public GameObject bulletPrefab;       // Prefab for the bullet
+
+    private Rigidbody rb;
+    private Transform t;
+    private float moveInput = 0f;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        t = transform;
+    }
 
     void Update()
     {
-        if (!IsOwner) return; // Only allow movement for the local player
-
-        HandleMovement();
+        HandleRotation();
+        HandleMovementInput();
         HandleShooting();
     }
 
-    void HandleMovement()
+    // Uses transform.Rotate for smoother, more responsive turning.
+    void HandleRotation()
     {
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveZ = Input.GetAxisRaw("Vertical");
+        float rotationInput = 0f;
+        if (Input.GetKey(KeyCode.D))
+            rotationInput = 1f;
+        else if (Input.GetKey(KeyCode.A))
+            rotationInput = -1f;
 
-        moveDirection = new Vector3(moveX, 0, moveZ).normalized;
-
-        if (moveDirection != Vector3.zero)
-        {
-            transform.forward = moveDirection;
-        }
-
-        transform.position += moveDirection * moveSpeed * Time.deltaTime;
+        // Rotate around the Y-axis based on rotationSpeed and deltaTime.
+        t.Rotate(Vector3.up, rotationInput * rotationSpeed * Time.deltaTime);
     }
 
+    // Reads forward/backward input.
+    void HandleMovementInput()
+    {
+        if (Input.GetKey(KeyCode.W))
+        {
+            moveInput = 1f;
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            moveInput = -1f;
+        }
+        else
+        {
+            moveInput = 0f;
+        }
+    }
+
+    // Applies movement in FixedUpdate for physics consistency.
+    void FixedUpdate()
+    {
+        // Calculate the horizontal (XZ) velocity.
+        Vector3 horizontalVelocity = t.forward * moveInput * speed;
+        // Set velocity directly for crisp start/stop (preserving the vertical velocity).
+        rb.linearVelocity = new Vector3(horizontalVelocity.x, rb.linearVelocity.y, horizontalVelocity.z);
+    }
+
+    // Handles shooting when Space is pressed.
     void HandleShooting()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -40,14 +75,15 @@ public class Cop : NetworkBehaviour
         }
     }
 
+    // Instantiates a bullet and gives it a forward velocity.
     void ShootBullet()
     {
-        GameObject bullet = Instantiate(bulletPrefab, transform.position + transform.forward * 1.5f, Quaternion.identity);
-        Rigidbody rb = bullet.GetComponent<Rigidbody>();
-
-        if (rb != null)
+        // Spawn the bullet a little ahead of the Cop.
+        GameObject bullet = Instantiate(bulletPrefab, t.position + t.forward * 1.5f, Quaternion.identity);
+        Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
+        if (bulletRb != null)
         {
-            rb.linearVelocity = transform.forward * bulletSpeed;
+            bulletRb.linearVelocity = t.forward * bulletSpeed;
         }
         else
         {
