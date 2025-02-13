@@ -151,7 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
   copPrefab: {fileID: 29124107612291261, guid: a187a50765cca455c947666cc98661ae, type: 3}
-  robberPrefab: {fileID: 29124107612291261, guid: c5dca390ffb2240e6889a163e688cdfa, type: 3}
+  robberPrefab: {fileID: 0}
   copSpawnPoint: {fileID: 1346123219}
   robberSpawnPoints:
   - {fileID: 1152172668}
