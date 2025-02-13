@@ -151,7 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
   copPrefab: {fileID: 29124107612291261, guid: a187a50765cca455c947666cc98661ae, type: 3}
-  robberPrefab: {fileID: 996542147}
+  robberPrefab: {fileID: 0}
   copSpawnPoint: {fileID: 1346123219}
   robberSpawnPoints:
   - {fileID: 1152172668}
@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 10617486}
   m_Layer: 0
   m_Name: Boundary
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -497,7 +497,7 @@ GameObject:
   - component: {fileID: 169076053}
   m_Layer: 0
   m_Name: Wall (7)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1832,7 +1832,7 @@ GameObject:
   - component: {fileID: 823601351}
   m_Layer: 0
   m_Name: Wall (2)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2006,11 +2006,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!1 &996542147 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1285540426317231002, guid: 71f2461ea1127410f8eabbfbe96758a7, type: 3}
-  m_PrefabInstance: {fileID: 4445997668152458527}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1000212483
 GameObject:
   m_ObjectHideFlags: 0
@@ -2205,7 +2200,7 @@ GameObject:
   - component: {fileID: 1095681277}
   m_Layer: 0
   m_Name: Wall (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2562,7 +2557,7 @@ GameObject:
   - component: {fileID: 1221406477}
   m_Layer: 0
   m_Name: Wall (5)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2889,7 +2884,7 @@ GameObject:
   - component: {fileID: 1296543187}
   m_Layer: 0
   m_Name: Wall (4)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3288,7 +3283,7 @@ GameObject:
   - component: {fileID: 1575057542}
   m_Layer: 0
   m_Name: Wall (3)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3479,7 +3474,7 @@ GameObject:
   - component: {fileID: 1577771014}
   m_Layer: 0
   m_Name: Wall (6)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4026,7 +4021,7 @@ GameObject:
   - component: {fileID: 1734634262}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4521,79 +4516,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5681615ee5e242009b0d19278ab9bdd, type: 3}
---- !u!1001 &4445997668152458527
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1285540426317231002, guid: 71f2461ea1127410f8eabbfbe96758a7, type: 3}
-      propertyPath: m_Name
-      value: Robber
-      objectReference: {fileID: 0}
-    - target: {fileID: 1285540426317231002, guid: 71f2461ea1127410f8eabbfbe96758a7, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1285540426317231002, guid: 71f2461ea1127410f8eabbfbe96758a7, type: 3}
-      propertyPath: m_TagString
-      value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 4630911952243525936, guid: 71f2461ea1127410f8eabbfbe96758a7, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4630911952243525936, guid: 71f2461ea1127410f8eabbfbe96758a7, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4630911952243525936, guid: 71f2461ea1127410f8eabbfbe96758a7, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4630911952243525936, guid: 71f2461ea1127410f8eabbfbe96758a7, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4630911952243525936, guid: 71f2461ea1127410f8eabbfbe96758a7, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4630911952243525936, guid: 71f2461ea1127410f8eabbfbe96758a7, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4630911952243525936, guid: 71f2461ea1127410f8eabbfbe96758a7, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4630911952243525936, guid: 71f2461ea1127410f8eabbfbe96758a7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4630911952243525936, guid: 71f2461ea1127410f8eabbfbe96758a7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4630911952243525936, guid: 71f2461ea1127410f8eabbfbe96758a7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8011963369668256290, guid: 71f2461ea1127410f8eabbfbe96758a7, type: 3}
-      propertyPath: GlobalObjectIdHash
-      value: 2130566267
-      objectReference: {fileID: 0}
-    - target: {fileID: 8011963369668256290, guid: 71f2461ea1127410f8eabbfbe96758a7, type: 3}
-      propertyPath: InScenePlacedSourceGlobalObjectIdHash
-      value: 137529894
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 71f2461ea1127410f8eabbfbe96758a7, type: 3}
 --- !u!4 &4497043253745209677 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6011534546736408586, guid: 7951b3bd03cfe462a9c7b552b3b34aa0, type: 3}
@@ -5059,7 +4981,6 @@ SceneRoots:
   - {fileID: 2043011547}
   - {fileID: 2679038167165431758}
   - {fileID: 4955988894261402993}
-  - {fileID: 4445997668152458527}
   - {fileID: 10617486}
   - {fileID: 1176156294}
   - {fileID: 6009895}
