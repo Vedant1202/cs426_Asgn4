@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -5714891291497372303}
   m_Layer: 0
   m_Name: bullet
-  m_TagString: Untagged
+  m_TagString: Absorber
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 385601772
+  GlobalObjectIdHash: 2717344798
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -155,6 +155,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyTime: 3
+  shrinkFactor: 0.8
+  maxBounces: 3
 --- !u!1 &6459957806911318809
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - Cop
   - Wall
+  - Absorber
   layers:
   - Default
   - TransparentFX
